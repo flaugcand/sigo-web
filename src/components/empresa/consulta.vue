@@ -1,27 +1,15 @@
 <template>
-  <div>My component</div>
+  <div>TESTE</div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 
 export default {
+  inject: ['setView'],
   name: 'ConsultaEmpresa',
   data () {
     return {}
-  },
-  computed: {
-    ...mapState({
-      mostraConsulta: state => state.app.mostraConsulta,
-      currentMenu: state => state.app.currentMenu,
-      filtroTabela: state => state.app.filtroTabela
-    })
-  },
-  methods: {
-    ...mapActions({
-      setCepSelecionado: 'app/setCepSelecionado',
-      setMostraConsulta: 'app/setMostraConsulta'
-    }),
-  }
+  }  
 }
 </script>

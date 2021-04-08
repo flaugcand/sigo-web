@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  // name: 'ComponentName',
+  inject: ['setView'],
+  name: 'FormularioEmpresa',
   data () {
     return {}
   }
