@@ -7,8 +7,9 @@
 // https://v1.quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
+const path = require('path')
 
-module.exports = function (/* ctx */) {
+module.exports = function (ctx) {
   return {
     // https://v1.quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -46,7 +47,9 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      env: ctx.dev ? require('./config/.env.dev') : require('./config/.env.prod'),
       vueRouterMode: 'history', // available values: 'hash', 'history'
+      publicPath: 'sigo-web',
 
       // transpile: false,
 
@@ -188,9 +191,13 @@ module.exports = function (/* ctx */) {
       // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration
       nodeIntegration: true,
 
-      extendWebpack (/* cfg */) {
+      extendWebpack (cfg) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias,
+          '@': path.resolve(__dirname, './src')
+        }
       }
     }
   }
