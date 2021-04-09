@@ -2,9 +2,9 @@ import axios from 'axios'
 
 export default ({ store }) => {
   axios.interceptors.request.use(config => {
-    console.log(process.env.URL_MAPA)
-    if (config.url.indexOf(process.env.URL_MAPA)) {
-      config.headers.authorization = 'Basic BASE64=USUARIO:SENHA'
+    const index = config.url.indexOf(process.env.API)
+    if (index !== undefined && index > -1) {
+      config.headers.authorization = ''
     }
     return config
   }, error => {

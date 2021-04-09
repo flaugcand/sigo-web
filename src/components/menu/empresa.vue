@@ -55,7 +55,6 @@ export default {
         })
       } else if (this.currentView === 'ConsultaEmpresa') {
         this.setView('ConsultaEmpresa').then(view => {
-          console.log(view)
         })
       }
       const currentView = null

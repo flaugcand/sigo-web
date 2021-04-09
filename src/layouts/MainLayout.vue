@@ -15,7 +15,7 @@
         <q-toolbar class="bg-primary text-white">
           <q-toolbar-title>Menu</q-toolbar-title>
         </q-toolbar>
-        <q-list class="bg-grey-6 text-white">
+        <q-list class="bg-blue-2 text-blue-10">
            <q-item clickable v-ripple>
               <q-item-section @click="cadastrarEmpresa()">Empresa</q-item-section>
             </q-item>
@@ -48,7 +48,6 @@ export default {
       this.setCurrentMenu('MenuEmpresa')
       this.setMostraConsulta(true)
       this.setCurrentView('ConsultaEmpresa')
-      this.left = false
     }
   }
 }
