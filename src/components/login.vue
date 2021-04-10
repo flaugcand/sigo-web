@@ -28,7 +28,7 @@
 
         <div class="row q-gutter-x-md flex flex-center">
           <q-btn label="Limpar" class="bg-red text-white" @click="limpar"/>
-          <q-btn label="Salvar" class="bg-green text-white" @click="login" :disable="!isValid"/>
+          <q-btn label="Login" class="bg-green text-white" @click="login" :disable="!isValid"/>
         </div>
       </div>
     </div>
