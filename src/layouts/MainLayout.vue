@@ -3,10 +3,11 @@
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
+        <q-btn dense flat round icon="menu" @click="left = !left"/>
         <q-toolbar-title>
           SIGO - Sistema Integrado de Gestão Operacional
         </q-toolbar-title>
+        <q-btn dense flat round icon="logout" @click="logout"/>
       </q-toolbar>
     </q-header>
 
@@ -15,9 +16,12 @@
         <q-toolbar class="bg-primary text-white">
           <q-toolbar-title>Menu</q-toolbar-title>
         </q-toolbar>
-        <q-list class="bg-blue-2 text-blue-10">
+        <q-list>
+           <q-item-label header>Módulo Gestão de Consultoria e Assessoria</q-item-label>
            <q-item clickable v-ripple>
-              <q-item-section @click="cadastrarEmpresa()">Empresa</q-item-section>
+              <q-item-section @click="cadastrarEmpresa()">
+                Empresa
+              </q-item-section>
             </q-item>
         </q-list>
       </div>
@@ -31,6 +35,7 @@
 </template>
 
 <script>
+import messageService from 'src/service/messageService'
 import { mapActions } from 'vuex'
 export default {
   data () {
@@ -48,6 +53,12 @@ export default {
       this.setCurrentMenu('MenuEmpresa')
       this.setMostraConsulta(true)
       this.setCurrentView('ConsultaEmpresa')
+    },
+    logout () {
+      messageService.sucesso('Logout realizado com sucesso.')
+      sessionStorage.setItem('token', null)
+      sessionStorage.clear()
+      this.$router.push({ name: 'login' })
     }
   }
 }
